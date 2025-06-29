@@ -1,6 +1,31 @@
+'use client';
+
 import React from 'react';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+  const pathname = usePathname();
+
+  // Fungsi untuk mendapatkan judul berdasarkan pathname
+  const getPageTitle = (path: string) => {
+    switch (path) {
+      case '/':
+        return 'All Menus';
+      case '/dashboard':
+        return 'Dashboard';
+      case '/analytics':
+        return 'Analytics';
+      case '/users':
+        return 'Users';
+      case '/reports':
+        return 'Reports';
+      case '/settings':
+        return 'Settings';
+      default:
+        return 'Dashboard';
+    }
+  };
+
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
       <div className="px-6 py-4">
@@ -9,7 +34,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                Dashboard
+                {getPageTitle(pathname)}
               </h1>
             </div>
           </div>
@@ -45,7 +70,7 @@ const Navbar = () => {
                 <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                   <span className="text-white text-sm font-medium">JD</span>
                 </div>
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">John Doe</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Snyzze</span>
               </button>
             </div>
           </div>
